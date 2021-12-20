@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 const mongoose = require('mongoose');
 const encrypt = require('mongoose-encryption')
-mongoose.connect('mongodb://localhost:27017/authDB', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/secretsDB', { useNewUrlParser: true });
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -61,7 +61,8 @@ app.post('/login', function (req, res) {
             console.log(err);
         }
         else {
-            if (founduser,function(err){}) {
+            if (foundUser) {
+                console.log(foundUser)
                 if (foundUser.password === password) {
                     res.render('secrets')
                 }
